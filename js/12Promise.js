@@ -23,8 +23,8 @@ function goOut(weather) {
         resolve(true);
       } else {
         // cas défavorable, je n'ai pas le moral
-        if(weather !== "Il fait beau") reject(false)
-        reject("PAs de sortie, il ne faisait pas beau et j'ai pas le moral");
+        if(weather !== "Il fait beau") reject(false);
+        else reject("PAs de sortie, il ne faisait pas beau et j'ai pas le moral");
       }
     }, 2000);
   })
