@@ -1,0 +1,18 @@
+#my-modal {
+  width: 100vw;
+  height: 100vh;
+  border: 1px solid red;
+  
+  /* 
+  
+  justify-content: center;
+  align-items: center;
+   */
+  
+}
+#modal-body {
+  margin: 25vh auto;
+  width: 300px;
+  height: 300px;
+  border: 2px solid black;
+}
