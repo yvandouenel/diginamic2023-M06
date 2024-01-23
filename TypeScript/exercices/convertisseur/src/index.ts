@@ -1,10 +1,10 @@
 import { createMarkup } from "./utils/utils";
+import "bootstrap/dist/css/bootstrap.css";
+
 // création des éléments du dom
-const form: HTMLFormElement = createMarkup(
-  "form",
-  "",
-  document.body
-) as HTMLFormElement;
+const form: HTMLFormElement = createMarkup("form", "", document.body, {
+  class: "container",
+}) as HTMLFormElement;
 
 // Ici on utilise une assertion pour dire à TS que l'on sait que l'on récupère un input
 // c'est qui va nous permettre de récupérer la value de l'input
