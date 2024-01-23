@@ -1,18 +1,32 @@
 import { createMarkup } from "./utils/utils";
 // création des éléments du dom
-const form: HTMLFormElement = createMarkup("form", "", document.body) as HTMLFormElement;
+const form: HTMLFormElement = createMarkup(
+  "form",
+  "",
+  document.body
+) as HTMLFormElement;
 
+// Ici on utilise une assertion pour dire à TS que l'on sait que l'on récupère un input
+// c'est qui va nous permettre de récupérer la value de l'input
 const inputEuro: HTMLInputElement = createMarkup("input", "", form, {
-  type: "text",
+  type: "number",
   id: "euro",
 }) as HTMLInputElement;
 
+inputEuro.addEventListener("input", (e: Event)=>{
+  // Comment typer value de manière à imposer un nombre ?
+  const value: number = inputEuro.value;
+  console.log(`Input Euro :`, value);
 
-const labelEuro: HTMLElement = document.createElement("label");
-labelEuro.setAttribute("for", "euro");
-labelEuro.innerText = "euros";
-form.appendChild(labelEuro);
+  // Il faut maintenant modifier la value de l'inputChf en fonction du taux de conversion (1.06) et de value
+});
 
-const inputChf: HTMLInputElement = document.createElement("input");
-inputEuro.setAttribute("type", "text");
-form.appendChild(inputChf);
+const labelEuro: HTMLElement = createMarkup("label", "euros", form, {
+  for: "euro",
+});
+
+const inputChf: HTMLInputElement = createMarkup("input", "euros", form, {
+  type: "text",
+}) as HTMLInputElement;
+
+
