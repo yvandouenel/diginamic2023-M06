@@ -27,8 +27,12 @@ const labelEuro: HTMLElement = createMarkup("label", "euros", form, {
 });
 
 const inputChf: HTMLInputElement = createMarkup("input", "euros", form, {
-  type: "text",
+  type: "number",
+  id: "chf"
 }) as HTMLInputElement;
+const labelChf: HTMLElement = createMarkup("label", "chf", form, {
+  for: "chf",
+});
 
 inputChf.addEventListener("input", (e: Event) => {
   // Comment typer value de manière à imposer un nombre ?
