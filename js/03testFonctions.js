@@ -29,3 +29,19 @@ function a() {
   }
 }
 a();
+
+function createPerson() {
+  const lastname = 'Dylan';
+  const firstname = 'Bob';
+  return { lastname, firstname };
+}
+console.log(`createPerson()`, createPerson());
+
+function createPerson() {
+  return {
+    run() {
+      console.log('GO!');
+    }
+  };
+}
+console.log(`createPerson()`, createPerson());
