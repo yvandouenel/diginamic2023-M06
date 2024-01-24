@@ -26,7 +26,7 @@
           <span *ngIf="isLast">Dernier</span>
           <span [ngClass]="{'text-decoration-line-through': task.done, 'task-not-done': !task.done}">{{ task.name }}</span>
           <span>{{ task.comment }}</span>
-          <button (click)="onButtonValidate()">Valider</button>
+          <button (click)="onButtonValidate(task)" class="btn btn-success" >Valider</button>
         </div>
       </li>
     </ul>
