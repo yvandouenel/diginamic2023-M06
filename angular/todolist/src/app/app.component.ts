@@ -1,22 +1,35 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'digi-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, CommonModule, FormsModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'Todo list';
   isHidden = true;
-  hello = "Hello World!";
+  hello = 'Hello World!';
   selected = true;
-  task = {
-    id: 1,
-    name: "Faire la vaisselle",
-    done: true
+  tasks = [
+    {
+      id: 1,
+      name: 'Faire la vaisselle',
+      done: false,
+      comment:
+        'Dépêche toi mon lapin, je ne supporte pas de voir traîner la vaisselle',
+    },
+    {
+      id: 2,
+      name: 'Faire le ménage',
+      done: false,
+    },
+  ];
+  logValue = (text: string) => {
+    console.log(`value : `, text);
   }
 }

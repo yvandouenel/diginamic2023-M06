@@ -7,9 +7,28 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<main class="main">
+<main class="main flex-column align-items-start container">
   <h1>{{ title }}</h1>
-  <h2>{{ task.name }}</h2>
+  <!--  <input [(ngModel)]="hello"> 
+  <p>{{hello}}</p> -->
+  <section *ngIf="tasks.length > 0">
+    <h2 class="text-danger">Les tâches qu'il te reste à faire :</h2>
+    <ul class="list-unstyled">
+      <li
+        *ngFor="let task of tasks; index as i; first as isFirst; last as isLast"
+      >
+        <div style="display: flex; gap: 20px">
+          <span *ngIf="isFirst">Premier</span>
+          <span *ngIf="isLast">Dernier</span>
+          <span [ngClass]="{'text-decoration-line-through': task.done, 'task-not-done': !task.done}">{{ task.name }}</span>
+          <span>{{ task.comment }}</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <input #lastname type="text" value="test" />
+  <button (click)="lastname.focus()">Focus the input</button>
+  <button (click)="logValue(lastname.value)">Afficher le nom</button>
 </main>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
