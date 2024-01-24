@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TaskInterface } from './shared/interfaces/task.interface';
 
 @Component({
   selector: 'digi-root',
@@ -15,7 +16,7 @@ export class AppComponent {
   isHidden = true;
   hello = 'Hello World!';
   selected = true;
-  tasks = [
+  tasks: TaskInterface[] = [
     {
       id: 1,
       name: 'Faire la vaisselle',
@@ -31,5 +32,12 @@ export class AppComponent {
   ];
   logValue = (text: string) => {
     console.log(`value : `, text);
-  }
+  };
+  fontWeight = 'bold';
+  color = '#AAA';
+  amount = 125.7;
+  date = new Date();
+  onButtonValidate = () => {
+    console.log(`Dans onButtonValidate `);
+  };
 }
