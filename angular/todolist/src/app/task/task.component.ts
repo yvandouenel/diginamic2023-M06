@@ -10,6 +10,9 @@ import { CommonModule } from '@angular/common';
   styleUrl: './task.component.css',
 })
 export class TaskComponent {
+  constructor() {
+    console.log(`task : `, this.task);
+  }
   @Input() task: TaskInterface | undefined;
   onButtonValidate(task: TaskInterface) {
     // Quand la variable est un booléen, alors !variable indique l'opposé (true/false)

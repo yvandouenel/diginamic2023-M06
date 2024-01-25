@@ -1,11 +1,10 @@
-<!-- Instanciation digi-task -->
-
 <section *ngIf="tasks.length > 0">
   <h2 class="text-danger">Les tâches qu'il te reste à faire :</h2>
   <ul class="list-unstyled">
     <li
-      *ngFor="let task of tasks; index as i; first as isFirst; last as isLast"
+      *ngFor="let task of tasks;"
     >
+    <!-- Instanciation digi-task -->
     <digi-task [task]="task"></digi-task>
       
     </li>
