@@ -1,0 +1,21 @@
+<div *ngIf="task !== undefined" style="display: flex; gap: 20px">
+  <span
+    [ngClass]="{
+      'text-decoration-line-through': task.done,
+      'task-not-done': !task.done
+    }"
+    >{{ task.name }}</span
+  >
+  <span>{{ task.comment }}</span>
+  <button
+    (click)="onButtonValidate(task)"
+    [ngClass]="{
+      btn: true,
+      'btn-warning': task.done,
+      'btn-success': !task.done
+    }"
+  >
+    <!-- Opérateur ternaire, permet de faire la même chose qu'un if else mais dans une expression -->
+    {{ task.done ? "Invalider" : "Valider" }}
+  </button>
+</div>

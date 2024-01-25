@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { TaskInterface } from '../shared/interfaces/task.interface';
 import { CommonModule } from '@angular/common';
-
+import { TaskComponent } from '../task/task.component';
 @Component({
   selector: 'digi-tasks-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TaskComponent],
   templateUrl: './tasks-list.component.html',
   styleUrl: './tasks-list.component.css'
 })
@@ -24,10 +24,4 @@ export class TasksListComponent {
       done: false,
     },
   ];
-  onButtonValidate(task: TaskInterface) {
-    // Quand la variable est un booléen, alors !variable indique l'opposé (true/false)
-    // Le fait de pouvoir travailler directement sur task indique que la propriété tasks est passée
-    // en référence sinon notre code n'aurait pas d'effet de bord
-    task.done = !task.done;
-  }
 }
