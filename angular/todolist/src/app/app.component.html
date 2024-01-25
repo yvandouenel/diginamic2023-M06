@@ -10,49 +10,8 @@
 <main class="main flex-column align-items-start container">
   <h1>{{ title}}</h1>
   <!-- Instanciation du component TasksList -->
+  <digi-tasks-list></digi-tasks-list>
   
-  {{ date | date : "d/MM/yy" }}
-  {{ amount | currency : "EUR" }}
-  <div [ngStyle]="{ fontWeight: fontWeight, color: color }">I've got style</div>
-  <!--  <input [(ngModel)]="hello"> 
-  <p>{{hello}}</p> -->
-  {{ tasks | slice : 0 : 1 | json }}
-  <section *ngIf="tasks.length > 0">
-    <h2 class="text-danger">Les tâches qu'il te reste à faire :</h2>
-    <ul class="list-unstyled">
-      <li
-        *ngFor="let task of tasks; index as i; first as isFirst; last as isLast"
-      >
-        <div style="display: flex; gap: 20px">
-          <span *ngIf="isFirst">Premier</span>
-          <span *ngIf="isLast">Dernier</span>
-          <span
-            [ngClass]="{
-              'text-decoration-line-through': task.done,
-              'task-not-done': !task.done
-            }"
-            >{{ task.name }}</span
-          >
-          <span>{{ task.comment }}</span>
-          <button
-            (click)="onButtonValidate(task)"
-            [ngClass]="{
-              'btn': true,
-              'btn-warning': task.done,
-              'btn-success': !task.done
-            }"
-          >
-          <!-- Opérateur ternaire, permet de faire la même chose qu'un if else mais dans une expression -->
-            {{ task.done ? "Invalider" : "Valider" }}
-          </button>
-        </div>
-      </li>
-    </ul>
-  </section>
-
-  <input #lastname type="text" value="test" />
-  <button (click)="lastname.focus()">Focus the input</button>
-  <button (click)="logValue(lastname.value)">Afficher le nom</button>
 </main>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->

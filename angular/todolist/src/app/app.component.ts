@@ -17,20 +17,7 @@ export class AppComponent {
   isHidden = true;
   hello = 'Hello World!';
   selected = true;
-  tasks: TaskInterface[] = [
-    {
-      id: 1,
-      name: 'Faire la vaisselle',
-      done: false,
-      comment:
-        'Dépêche toi mon lapin, je ne supporte pas de voir traîner la vaisselle',
-    },
-    {
-      id: 2,
-      name: 'Faire le ménage',
-      done: false,
-    },
-  ];
+  
   logValue = (text: string) => {
     console.log(`value : `, text);
   };
@@ -38,12 +25,5 @@ export class AppComponent {
   color = '#AAA';
   amount = 125.7;
   date = new Date();
-  onButtonValidate(task: TaskInterface) {
-    // Quand la variable est un boolen, alors !variable indique l'opposé (true/false)
-    // Le fait de pouvoir travailler directement sur task indique que la propriété tasks est passée
-    // en référence sinon notre code n'aurait pas d'effet de bord
-    task.done = !task.done;
-  }
-  
 }
 
