@@ -5,9 +5,11 @@ import {
   throwError,
   of,
   debounceTime,
-  filter
+  filter,
+  catchError,
 } from "rxjs";
 import { loadCountries } from "./services/restCountries";
+import { render } from "./utils/utils";
 
 // Création d'un premier observable
 /* const firstObservable$ = new Observable((subscriber) => {
@@ -50,17 +52,26 @@ const observalbeInput$ = fromEvent(inputElt, "input").pipe(
   switchMap((value) => {
     return loadCountries(value);
   }),
+  catchError((error: Error) => {
+    console.error("Erreur attrapée : ", error);
+    // Ici, je renvoie un observable depuis un tableau vide
+    // pour que observalbeInput$ soit bien un observable même en cas d'erreur
+    return of([]);
+  })
 );
 
 observalbeInput$.subscribe({
   // gestion de la notification next
-  next: (value) => console.log("observer 1 : ", value),
-  error: (e) => console.log("Erreur survenue :", e),
+  next: (countries) => {
+    console.log("observer 1 : ", countries);
+    render("li", countries);
+  },
+  error: (e) => console.log("Erreur survenue dans l'obervateur:", e),
 });
-setTimeout(() => {
+/* setTimeout(() => {
   observalbeInput$.subscribe({
     // gestion de la notification next
     next: (value) => console.log("observer 2 : ", value),
     error: (e) => console.log("Erreur survenue :", e),
   });
-}, 3000);
+}, 3000); */
