@@ -12,7 +12,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class AppComponent {
   constructor(headTitle: Title) {
-    // Injection de la dépendance Title et instanciation
+    // Injection de la dépendance Title, instanciation et appel de la méthode setTitle
     headTitle.setTitle('Ma toDoList de la mort');
   }
   title = 'Todo list';
