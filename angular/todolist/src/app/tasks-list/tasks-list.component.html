@@ -1,6 +1,7 @@
 <digi-form-task></digi-form-task>
+<h2 *ngIf="error" class="text-danger"> {{ error }}</h2>
 <section *ngIf="tasks.length > 0">
-  <h2 class="text-danger">Les tâches qu'il te reste à faire :</h2>
+  <h2 class="text-secondary">Les tâches qu'il te reste à faire :</h2>
   <ul class="list-unstyled">
     <li
       *ngFor="let task of tasks;"
