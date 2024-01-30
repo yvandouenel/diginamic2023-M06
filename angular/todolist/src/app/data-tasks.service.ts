@@ -16,7 +16,7 @@ export class DataTasksService {
     return this.http.get<Array<TaskInterface>>(DataTasksService.url);
   }
   addTasks(newTask: TaskInterface): Observable<TaskInterface> {
-    return this.http.post<TaskInterface>(DataTasksService.url, newTask);
+    return this.http.post<TaskInterface>(DataTasksService.url + "toto", newTask);
   }
   setFormValues(values: any) {
     this.formValues.next(values);

@@ -37,6 +37,9 @@ export class TasksListComponent {
         next: (taskFromServer) => {
           console.log(`taskFromServer : `, taskFromServer);
         },
+        error: (error) => {
+          console.error(`Erreur attrapée : `, error);
+        },
       });
     });
   }
