@@ -3,10 +3,11 @@ import { TaskInterface } from '../shared/interfaces/task.interface';
 import { CommonModule } from '@angular/common';
 import { TaskComponent } from '../task/task.component';
 import { DataTasksService } from '../data-tasks.service';
+import { FormTaskComponent } from '../form-task/form-task.component';
 @Component({
   selector: 'digi-tasks-list',
   standalone: true,
-  imports: [CommonModule, TaskComponent],
+  imports: [CommonModule, TaskComponent, FormTaskComponent],
   templateUrl: './tasks-list.component.html',
   styleUrl: './tasks-list.component.css',
 })
@@ -20,6 +21,17 @@ export class TasksListComponent {
       next: (tasks: TaskInterface[]) => {
         this.tasks = tasks;
       },
+    });
+    // Souscription à l'observable issu du service et du formulaire d'ajout
+    this.dataTasksService.getFormValues().subscribe((values) => {
+      console.log(`values dans  TasksListComponent: `, values);
+      // Il faut maintenant ajouter une nouvelle tâche à "tasks"
+      const newTask: TaskInterface = {
+        id: Date.now(),
+        name: values.task,
+        done: false,
+      };
+      this.tasks.push(newTask);
     });
   }
 }
