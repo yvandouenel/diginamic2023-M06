@@ -13,8 +13,13 @@ import { DataTasksService } from '../data-tasks.service';
 export class TasksListComponent {
   tasks: TaskInterface[] = [];
   // Injection du service DataTasksService via le constructeur
-  constructor(private dataTasksService: DataTasksService) {
-    this.tasks = this.dataTasksService
-      .loadTasks();
+  constructor(private dataTasksService: DataTasksService) {}
+  ngOnInit(): void {
+    // Voilà la souscription à l'observable
+    this.dataTasksService.loadTasks().subscribe({
+      next: (tasks: TaskInterface[]) => {
+        this.tasks = tasks;
+      },
+    });
   }
 }

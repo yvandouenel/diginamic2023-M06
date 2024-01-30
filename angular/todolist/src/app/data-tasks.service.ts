@@ -1,26 +1,17 @@
 import { Injectable } from '@angular/core';
 import { TaskInterface } from './shared/interfaces/task.interface';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataTasksService {
-  constructor() {}
+  // Injection du service HttpClient
+  constructor(private http: HttpClient) {}
 
-  loadTasks(): TaskInterface[] {
-    return [
-      {
-        id: 1,
-        name: 'Faire la vaisselle',
-        done: true,
-        comment:
-          'Dépêche-toi mon lapin, je ne supporte pas de voir traîner la vaisselle !',
-      },
-      {
-        id: 2,
-        name: 'Faire un ménage complet',
-        done: false,
-      },
-    ];
+  loadTasks(): Observable<TaskInterface[]> {
+    const url = 'http://localhost:3000/tasks';
+    return this.http.get<Array<TaskInterface>>(url);
   }
 }
