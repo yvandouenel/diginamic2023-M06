@@ -56,5 +56,17 @@ export class TasksListComponent {
         });
       }
     });
+    // Souscription à l'observable issu du clic sur le bouton "delete"
+    this.dataTasksService.getDeleteTaskObservable().subscribe((task) => {
+      console.log(`Tâche à supprimer dans TasksListComponent: `, task);
+      if (task) {
+        // Il faut maintenant supprimer une tâche à "tasks" en local
+        this.tasks = this.tasks.filter((currentTask) => {
+          return currentTask !== task;
+        });
+
+        // Appel du service qui supprime en base de données via une requête http avec le verbe DELETE
+      }
+    });
   }
 }

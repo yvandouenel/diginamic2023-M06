@@ -18,4 +18,7 @@
     <!-- Opérateur ternaire, permet de faire la même chose qu'un if else mais dans une expression -->
     {{ task.done ? "Invalider" : "Valider" }}
   </button>
+  <button (click)="onButtonDelete(task)" class="btn btn-danger">
+    Supprimer
+  </button>
 </div>
