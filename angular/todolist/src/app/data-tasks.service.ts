@@ -8,12 +8,15 @@ import { Observable, Subject } from 'rxjs';
 })
 export class DataTasksService {
   private formValues = new Subject<any>();
+  static url = 'http://localhost:3000/tasks';
   // Injection du service HttpClient
   constructor(private http: HttpClient) {}
 
   loadTasks(): Observable<TaskInterface[]> {
-    const url = 'http://localhost:3000/tasks';
-    return this.http.get<Array<TaskInterface>>(url);
+    return this.http.get<Array<TaskInterface>>(DataTasksService.url);
+  }
+  addTasks(newTask: TaskInterface): Observable<TaskInterface> {
+    return this.http.post<TaskInterface>(DataTasksService.url, newTask);
   }
   setFormValues(values: any) {
     this.formValues.next(values);

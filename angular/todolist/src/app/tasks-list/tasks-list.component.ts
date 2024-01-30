@@ -32,6 +32,12 @@ export class TasksListComponent {
         done: false,
       };
       this.tasks.push(newTask);
+      // Appel du service qui fait une requête http avec le verbe post
+      this.dataTasksService.addTasks(newTask).subscribe({
+        next: (taskFromServer) => {
+          console.log(`taskFromServer : `, taskFromServer);
+        },
+      });
     });
   }
 }

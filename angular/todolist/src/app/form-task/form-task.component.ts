@@ -18,5 +18,6 @@ export class FormTaskComponent {
     console.log(`Formulaire soumis`, taskForm.value);
     this.dataTasksService.setFormValues(taskForm.value);
     taskForm.resetForm();
+   
   }
 }
