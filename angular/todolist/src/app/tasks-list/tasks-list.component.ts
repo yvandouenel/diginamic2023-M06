@@ -66,6 +66,9 @@ export class TasksListComponent {
         });
 
         // Appel du service qui supprime en base de données via une requête http avec le verbe DELETE
+        this.dataTasksService.deleteTask(task).subscribe((dTask)=> {
+          console.log(`dTask `, dTask);
+        });
       }
     });
   }

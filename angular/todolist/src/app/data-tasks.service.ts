@@ -21,6 +21,9 @@ export class DataTasksService {
   addTasks(newTask: TaskInterface): Observable<TaskInterface> {
     return this.http.post<TaskInterface>(DataTasksService.url, newTask);
   }
+  deleteTask(taskToDelete: TaskInterface): Observable<TaskInterface> {
+    return this.http.delete<TaskInterface>(DataTasksService.url + '/' + taskToDelete.id);
+  }
   setFormValues(values: any) {
     this.formValues.next(values);
   }
